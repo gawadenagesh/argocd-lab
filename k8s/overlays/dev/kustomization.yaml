@@ -5,20 +5,20 @@ namespace: argocd-lab-dev
 namePrefix: dev-
 
 resources:
-  - ../../base
+- ../../base
 
 replicas:
-  - name: hello-gitops
-    count: 2
+- count: 2
+  name: hello-gitops
 patches:
-  - target:
-      kind: Deployment
-      name: hello-gitops
-    patch: |-
-      - op: replace
-        path: /spec/template/spec/containers/0/env/0/value
-        value: dev
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/env/0/value
+      value: dev
+  target:
+    kind: Deployment
+    name: hello-gitops
 images:
-  - name: hello-gitops
-    newName: ghcr.io/gawadenagesh/hello-gitops
-    newTag: dev
+- name: hello-gitops
+  newName: ghcr.io/gawadenagesh/hello-gitops
+  newTag: sha-c0681a8
