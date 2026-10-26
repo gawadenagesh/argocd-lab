@@ -17,9 +17,9 @@ class HealthResponse(BaseModel):
 @app.get("/", response_model=HealthResponse)
 def read_root() -> HealthResponse:
     logger.info("root endpoint called")
-    return HealthResponse(status="ok", version="1.0.0")
+    return HealthResponse(status="ok", version="2.0.0")
 
 
 @app.get("/health", response_model=HealthResponse)
 def health_check() -> HealthResponse:
-    return HealthResponse(status="ok", version="1.0.0")
+    return HealthResponse(status="ok", version="2.0.0")
